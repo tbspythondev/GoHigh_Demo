@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>Edit Contact Detail:</h2>
+
+<hr>
+<form action="/edit/{{data.id}}" method="post">
+    {% csrf_token %}
+    <tr>
+        <input type="hidden" name="key_id" maxlength="250" value={{data.id}}>            
+        <th><label for="id_name">name:</label></th>
+        <td>
+          <input type="text" name="name" maxlength="250" value={{data.name}}>            
+        </td>
+    </tr>
+    <br>
+    <input type="submit" value="Submit">
+    </br>
+</form>
+
+<!-- <table style="width:100%">
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>customField</th>
+    <th>tags</th>
+    <th>Edit</th>
+  </tr>  
+  {%for contacts in data.contacts %}
+  <tr>
+    <td>{{ contacts.id }}</td>
+    <td>{{ contacts.email }}</td>
+    <td>{% for cus_value in contacts.customField%}{{ cus_value.value }}{%endfor%}</td>
+    <td>{{contacts.tags}}</td>
+    <td><button>Edit</button></tr>
+  </tr>  
+  {%endfor%}
+  </table> -->
+</body>
+</html>

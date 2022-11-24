@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>Contact Detail:</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>customerFieldId</th>
+    <th>customField</th>
+    <th>tags</th>
+  </tr>  
+  {%for contacts in data.contacts %}
+  <tr>
+    <td>{{ contacts.id }}</td>
+    <td>{{ contacts.email }}</td>
+    <td>
+    {% for customer_ in contacts.customField %}
+    <p style="margin: 0;">{{ customer_.id }}</p>
+    {%endfor%}
+    </td>
+    <td>
+    {% for customer_ in contacts.customField %}
+    <div style="display:flex; justify-content: space-between;">
+      <p style="margin: 0;">{{ customer_.value }}</p>
+       <button style="margin-right: 5px;"><a href="{% url 'edit' customer_.id %} ">Edit</a></button>
+    </div>
+    {%endfor%}
+    </td>
+    <td>{{contacts.tags}}</td>
+    <!-- <td><button><a href="{% url 'edit' contacts.id %} ">Edit Contact</a></button></tr> -->
+  </tr>  
+  {%endfor%}
+  </table>
+</body>
+</html>
+
